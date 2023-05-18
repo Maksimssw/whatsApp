@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'SFProText';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./SFProText-Regular.woff') format('woff'),
+  url('./SFProText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SFProText';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./SFProText-Medium.woff') format('woff'),
+  url('./SFProText-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SFProText';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./SFProText-Semibold.woff') format('woff'),
+  url('./SFProText-Semibold.woff2') format('woff2');
+}
