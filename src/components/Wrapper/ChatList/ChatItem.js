@@ -4,6 +4,7 @@ import services from '../../../server/Services'
 import Contact from '../../UI/SVG/Contact'
 
 import styles from './index.module.css'
+import { useDispatch } from 'react-redux'
 
 const ChatItem = (props) => {
   const [avatar, setAvatar] = useState(null)
@@ -12,10 +13,13 @@ const ChatItem = (props) => {
 
   const { requestInfoContact } = services()
 
+  const dispatchFunction = useDispatch()
+
   useEffect(() => {
     getInfoContact()
   }, [])
 
+  // Get detailed information about the contact
   const getInfoContact = () => {
     requestInfoContact(props.id).then((data) => {
       setAvatar(data.avatar)
@@ -25,6 +29,17 @@ const ChatItem = (props) => {
     })
   }
 
+  // Transmitting data to open a chat
+  const openChatHandler = () => {
+    dispatchFunction({
+      type: 'add_chat',
+      id: props.id,
+      name: name,
+      avatar: avatar,
+    })
+  }
+
+  // Image Processing
   const imageContact =
     avatar === '' ? (
       <Contact class={styles.image} />
@@ -33,7 +48,7 @@ const ChatItem = (props) => {
     )
 
   return (
-    <li className={styles.item}>
+    <li className={styles.item} onClick={openChatHandler}>
       {imageContact}
       <span className={styles.name}>{name}</span>
       <p className={styles.message}>{message}</p>

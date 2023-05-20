@@ -2,14 +2,12 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   background-color: var(--color-gray50);
+  overflow: auto;
 }
 
 .chat__content {
-  display: grid;
-  grid-row-gap: 16px;
   align-items: end;
-  align-content: end;
-  padding: 0 20px 20px 20px;
+  padding: 20px;
   height: 100%;
   overflow-y: auto;
 }
@@ -32,6 +30,11 @@
 
 .message {
   display: grid;
+  margin-bottom: 8px;
+}
+
+.message:last-child {
+  margin-bottom: 0;
 }
 
 .message.incoming {
@@ -55,7 +58,7 @@
 }
 
 .message__text {
-  padding-right: 10px;
+  padding-right: 30px;
 }
 
 .incoming {
