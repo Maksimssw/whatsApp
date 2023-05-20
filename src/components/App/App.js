@@ -1,10 +1,16 @@
+import { useSelector } from 'react-redux'
+
 import Login from '../Login'
-import store from '../../store'
+import Wrapper from '../Wrapper'
 
 function App() {
-  const accountState = store.getState().account
+  const accountState = useSelector((state) => state.account)
 
-  return <main>{accountState.status !== 'authorized' ? <Login /> : ''}</main>
+  return (
+    <main>
+      {accountState.status !== 'authorized' ? <Login /> : <Wrapper />}
+    </main>
+  )
 }
 
 export default App

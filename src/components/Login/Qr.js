@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import server from '../../server/account'
+import Account from '../../server/Account'
 import Button from '../UI/Button'
+import Spinner from '../UI/Spinner/Spinner'
 
 import styles from './index.module.css'
-import Spinner from '../UI/Spinner/Spinner'
-import { useDispatch } from 'react-redux'
 
 const Qr = () => {
   const [image, setImage] = useState('')
   const [imageIsValid, setImageIsValid] = useState(false)
 
-  const { loading, requestQr, updateRequestLogin } = server()
+  const { loading, requestQr, requestLogin } = Account()
 
-  const dispatch = useDispatch()
+  const dispatchFunction = useDispatch()
+  const accountState = useSelector((state) => state.account)
 
+  // Changing the Qr code
   useEffect(() => {
     const timer = setInterval(() => {
       setImageIsValid(false)
@@ -26,9 +28,14 @@ const Qr = () => {
   }, [])
 
   const statusAccountHandler = () => {
-    updateRequestLogin().then((status) => {
-      dispatch({ type: 'status_account', account: status.stateInstance })
-    })
+    requestLogin(accountState.instance, accountState.apiToken).then(
+      (status) => {
+        dispatchFunction({
+          type: 'status_account',
+          account: status.stateInstance,
+        })
+      },
+    )
   }
 
   const getQrCode = () => {

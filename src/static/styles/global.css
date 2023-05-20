@@ -3,13 +3,17 @@
 :root {
   --color-white:     #FFFFFF;
 
+  --color-gray50:     #EFEAE2;
   --color-gray100:    #DADCDC;
   --color-gray130:    #C9C4BB;
   --color-gray160:    #F2F2F2;
   --color-gray200:    #E7E7E7;
+  --color-gray250:    #CED0D1;
+  --color-gray300:    #ABAEB0;
   --color-gray500:    #9C9CA3;
+  --color-gray550:    #667781;
 
-  --color-green180:   #E7FED8;
+  --color-green200:   #D9FDD3;
   --color-green300:   #00A884;
 
   --color-blue700:    #468CF7;
@@ -36,7 +40,7 @@
   margin: 0;
   padding: 0;
   line-height: 1.1;
-  font-family: 'SFProText', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
   font-weight: 400;
   border: none;
@@ -44,6 +48,20 @@
   -webkit-tap-highlight-color: transparent;
   outline: none;
   transition: color .2s;
+}
+
+* {
+  scrollbar-color: var(--color-gray300) var(--color-gray250);
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-gray300);
+}
+*::-webkit-scrollbar-track {
+  background: var(--color-gray250);
 }
 
 body {
@@ -55,9 +73,7 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  flex-direction: column;
   height: 100vh;
   background: var(--color-gray100);
   overflow: hidden;
@@ -117,13 +133,14 @@ input {
 }
 
 .container {
-  padding-right: var(--container-indent);
-  padding-left: var(--container-indent);
+  padding: 40px var(--container-indent);
+  height: 100vh;
 }
 
 .landing-main {
-  padding-right: var(--container-indent-login);
-  padding-left: var(--container-indent-login);
+  padding: 40px  var(--container-indent-login);
+  height: 100vh;
+  z-index: 2;
 }
 
 .grid-row {

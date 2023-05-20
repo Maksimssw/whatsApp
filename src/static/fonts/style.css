@@ -24,3 +24,12 @@
   src: url('./SFProText-Semibold.woff') format('woff'),
   url('./SFProText-Semibold.woff2') format('woff2');
 }
+
+@font-face {
+  font-family: 'Segoe UI';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./SegoeUI-Regular.woff') format('woff'),
+  url('./SegoeUI-Regular.woff2') format('woff2');
+}

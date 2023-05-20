@@ -1,6 +1,6 @@
 .login {
-  width: 1000px;
   padding: 30px 60px;
+  height: 100%;
   background: var(--color-white);
   box-shadow: 0 17px 50px 0 rgb(11 20 26 / 19%), 0 12px 15px 0 rgb(11 20 26 / 24%);
   z-index: 2;

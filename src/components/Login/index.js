@@ -1,23 +1,29 @@
 import Qr from './Qr'
-import store from '../../store'
 
 import styles from './index.module.css'
 import FormLogin from './FormLogin'
+import { useSelector } from 'react-redux'
 
 const Login = () => {
-  const accountState = store.getState().account
+  const accountState = useSelector((state) => state.account)
 
   const formLogin = accountState.instance === null &&
     accountState.apiToken === null && <FormLogin />
 
   return (
-    <section className={styles.login}>
-      <span className={styles['login__text']}>
-        Используйте WhatsApp на компьютере
-      </span>
+    <section className={`landing-main`}>
+      <div className={styles.login}>
+        <span className={styles['login__text']}>
+          Используйте WhatsApp на компьютере
+        </span>
 
-      {formLogin}
-      {localStorage.getItem('statusAccount') === 'notAuthorized' ? <Qr /> : ''}
+        {formLogin}
+        {localStorage.getItem('statusAccount') === 'notAuthorized' ? (
+          <Qr />
+        ) : (
+          ''
+        )}
+      </div>
     </section>
   )
 }

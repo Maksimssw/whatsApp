@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import Input from '../UI/Input'
 import Spinner from '../UI/Spinner/Spinner'
 import Button from '../UI/Button'
-import account from '../../server/account'
+import Account from '../../server/Account'
 
 import styles from './index.module.css'
 
@@ -12,9 +12,9 @@ const FormLogin = () => {
   const [instance, setInstance] = useState('')
   const [apiToken, setApiToken] = useState('')
 
-  const dispath = useDispatch()
+  const dispatchFunction = useDispatch()
 
-  const { loading, error, requestLogin } = account()
+  const { loading, error, requestLogin } = Account()
 
   const instanceHandler = (event) => setInstance(event.target.value)
   const apiTokenHandler = (event) => setApiToken(event.target.value)
@@ -27,7 +27,7 @@ const FormLogin = () => {
       localStorage.setItem('instance', instance)
       localStorage.setItem('apiToken', apiToken)
 
-      dispath({ type: 'status_account', account: data.stateInstance })
+      dispatchFunction({ type: 'status_account', account: data.stateInstance })
     })
   }
 

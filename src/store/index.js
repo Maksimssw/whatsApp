@@ -11,7 +11,6 @@ const baseState = {
 const accountReducer = (state = baseState, action) => {
   if (action.type === 'status_account') {
     localStorage.setItem('statusAccount', action.account)
-    console.log(state)
 
     return {
       account: {

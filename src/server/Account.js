@@ -1,9 +1,9 @@
 import Http from '../hooks/http.hook'
-import store from '../store'
+import { useSelector } from 'react-redux'
 
-const server = () => {
+const Account = () => {
   const { loading, error, request } = Http()
-  const accountState = store.getState().account
+  const accountState = useSelector((state) => state.account)
 
   const _host = 'https://api.green-api.com'
 
@@ -11,14 +11,6 @@ const server = () => {
   const requestLogin = async (idInstance, apiToken) => {
     const res = await request(
       `${_host}/waInstance${idInstance}/getStateInstance/${apiToken}`,
-    )
-
-    return res
-  }
-
-  const updateRequestLogin = async () => {
-    const res = request(
-      `${_host}/waInstance${accountState.instance}/getStateInstance/${accountState.apiToken}`,
     )
 
     return res
@@ -33,7 +25,7 @@ const server = () => {
     return res
   }
 
-  return { loading, error, requestLogin, updateRequestLogin, requestQr }
+  return { loading, error, requestLogin, requestQr }
 }
 
-export default server
+export default Account
